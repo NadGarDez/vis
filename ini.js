@@ -15,7 +15,7 @@ export default class Ini extends Component{
 		this.state={
 			webv:"hidden",
 			view:'ini',
-			e:true,
+			e:false,
 			'secciones':{
 				'ini':{src:"https:\//www.visitezitalie.fr/"},
 				'boton1':{src:'https:\//www.visitezitalie.fr/'},
@@ -25,7 +25,7 @@ export default class Ini extends Component{
 
 			}
 		}
-
+		console.log(this.state.e)
 
 	}
 
@@ -44,7 +44,7 @@ export default class Ini extends Component{
 		let A = ()=>{
 
 			let component=""
-			if(this.state.error == false){
+			if(this.state.e == false){
 				console.log(this.state)
 
 				component = (
@@ -52,8 +52,8 @@ export default class Ini extends Component{
 							onError={
 								(e)=>{
 									//this.state.error = true
-									console.log(e)
-									this.setState({error:true})
+									console.log("error ${e}")
+									this.setState({e:true})
 								}
 							}
 							onLoad={(syntheticEvent) => {

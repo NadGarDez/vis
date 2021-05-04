@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "visitez",
+    "name": "Visitez l'ltalie",
     "slug": "visitez",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -17,16 +17,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ccinice.visitezlltalie",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Nous utilisons les images que vous allez télécharger depuis votre galerie pour publier vos annonces",
+        "NSCameraUsageDescription": "Nous utilisons les images que vous téléchargerez depuis votre appareil photo pour publier vos annonces.",
+        "NSLocationWhenInUseUsageDescription": "Nous utilisons votre emplacement pour vous montrer les activités qui sont proches de vous"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
