@@ -2,9 +2,9 @@
   "expo": {
     "name": "Visitez l'ltalie",
     "slug": "visitez",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ic.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -28,6 +28,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "",
+    "android": {
+      "package": "com.ccinice.visitezlltalie"
+    }
   }
 }
