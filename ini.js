@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState,useEffect} from 'react';
 import {StyleSheet, AppRegistry, ScrollView, Image, Text,Alert,View,TouchableOpacity,ActivityIndicator, Platform} from 'react-native';
 import {requestTrackingPermissionsAsync} from "expo-tracking-transparency";
 import { WebView } from 'react-native-webview';
@@ -6,15 +6,61 @@ import { WebView } from 'react-native-webview';
 import E from "./error.js"
 import N from "./noGranted.js"
 
+const H = (props)=>{
+	const [grant,setGrant] = useState(false)
+	const [,reload] = useState()
+	useEffect(
+		()=>{
+			(
+				async ()=>{
+					if(grant==false ){
+						const {status} = await requestTrackingPermissionsAsync()
+						if(status === "granted"){
+							setGrant(true)
+						}
+					}
 
-export default class Ini extends Component{
+				}
+			)()
+		},
+		[]
+	)
+
+	const cerox = ()=>{
+		reload()
+	}
+	//cerox()
+	let i = ""
+
+	if(grant == true){
+		i = (<Ini granted={grant}/>)
+	}
+	else{
+		i = (
+			<N recargar={cerox}/>
+		)
+	}
+
+	return (
+		<>
+			{
+				i
+			}
+		</>
+	)
+
+}
+
+
+
+class Ini extends Component{
 
 	constructor(props){
 
 		super(props)
-		this.centro = this.centro.bind(this)
 		this.recargar = this.recargar.bind(this)
 		this.state={
+			granted:false,
 			webv:"hidden",
 			view:'ini',
 			e:false,
@@ -36,150 +82,22 @@ export default class Ini extends Component{
 		this.forceUpdate()
 	}
 
-	centro(){
 
-	}
 	render(){
 
 		let rec = this.recargar
 
-		console.log(rec)
-
-		let B = async ()=>{
-
-			let conponent = ""
-			/*
-
-			if(Platform.OS == "ios"){
-				/*const { status } = await requestTrackingPermissionsAsync();
-
-				if (status == "granted"){
-
-					if(this.state.e == false){
-						console.log(this.state)
-
-						component = (
-								<WebView source={{ uri: this.state.secciones[this.state.view].src }} style={{ marginTop: 20, width:'100%',height:'90%' }}
-									onError={
-										(e)=>{
-											//this.state.error = true
-											console.log("error ${e}")
-											this.setState({e:true})
-										}
-									}
-									onLoad={(syntheticEvent) => {
-							    const { nativeEvent } = syntheticEvent;
-							    console.log(nativeEvent.url)
-								//	this.setState({webv:"visible"})
-							  }}
-								/>
-						)
-
-
-					}
-					else{
-						component=(
-								<E recargar={rec}/>
-						)
-					}
-
-				}
-				else{
-					component = (
-						<N recargar={rec} />
-					)
-				}
-			}
-			else {/*
-				let component=""
-				if(this.state.e == false){
-					console.log(this.state)
-
-					component = (
-							<WebView source={{ uri: this.state.secciones[this.state.view].src }} style={{ marginTop: 20, width:'100%',height:'90%' }}
-								onError={
-									(e)=>{
-										//this.state.error = true
-										console.log("error ${e}")
-										this.setState({e:true})
-									}
-								}
-								onLoad={(syntheticEvent) => {
-						    const { nativeEvent } = syntheticEvent;
-						    console.log(nativeEvent.url)
-							//	this.setState({webv:"visible"})
-						  }}
-							/>
-					)
-				}
-
-			}*/
-			component = (
-				<N/>
-			)
-
-
-			return component
-
-		}
-
-
 		const A = ()=>{
-			let component = ""
-			if(Platform.OS == "ios"){
-				requestTrackingPermissionsAsync()
-				.then(
-					(res)=>{
-						console.log(res)
-						if(res.status == "granted"){
-							if(this.state.e == false){
-								console.log(this.state)
 
-								component = (
-										<WebView source={{ uri: this.state.secciones[this.state.view].src }} style={{ marginTop: 20, width:'100%',height:'90%' }}
-											onError={
-												(e)=>{
-													//this.state.error = true
-													console.log("error ${e}")
-													this.setState({e:true})
-												}
-											}
-											onLoad={(syntheticEvent) => {
-									    const { nativeEvent } = syntheticEvent;
-									    console.log(nativeEvent.url)
-										//	this.setState({webv:"visible"})
-									  }}
-										/>
-								)
-							}
-							else{
-								component=(
-										<E recargar={rec}/>
-								)
-							}
-						}
-						else{
-							component = (
-								<N recargar={rec} />
-							)
-						}
-					}
-				)
-				.catch(
-					(err)=>{
-							console.log(res)
-					}
-				)
-			}
-			else{
+				let element = ""
 				if(this.state.e == false){
 					console.log(this.state)
 
-					component = (
+
+					element = (
 							<WebView source={{ uri: this.state.secciones[this.state.view].src }} style={{ marginTop: 20, width:'100%',height:'90%' }}
 								onError={
 									(e)=>{
-										//this.state.error = true
 										console.log("error ${e}")
 										this.setState({e:true})
 									}
@@ -187,22 +105,20 @@ export default class Ini extends Component{
 								onLoad={(syntheticEvent) => {
 						    const { nativeEvent } = syntheticEvent;
 						    console.log(nativeEvent.url)
-							//	this.setState({webv:"visible"})
+
 						  }}
 							/>
 					)
 				}
 				else{
-					component=(
+					element=(
 							<E recargar={rec}/>
 					)
 				}
-			}
 
 
 
-
-			return component
+			return element
 		}
 
 		return(
@@ -293,3 +209,5 @@ export default class Ini extends Component{
 
 
 }
+
+export default H
