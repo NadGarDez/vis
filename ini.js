@@ -15,6 +15,7 @@ const H = (props)=>{
 				async ()=>{
 					if(grant==false ){
 						const {status} = await requestTrackingPermissionsAsync()
+						console.log(status, "status<--")
 						if(status === "granted"){
 							setGrant(true)
 						}
