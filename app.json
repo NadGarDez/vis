@@ -22,7 +22,8 @@
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Nous utilisons les images que vous allez télécharger depuis votre galerie pour publier vos annonces",
         "NSCameraUsageDescription": "Nous utilisons les images que vous téléchargerez depuis votre appareil photo pour publier vos annonces.",
-        "NSLocationWhenInUseUsageDescription": "Nous utilisons votre emplacement pour vous montrer les activités qui sont proches de vous"
+        "NSLocationWhenInUseUsageDescription": "Nous utilisons votre emplacement pour vous montrer les activités qui sont proches de vous",
+         "NSUserTrackingUsageDescription": "Nous utilisons des cookies pour stocker la session de l'utilisateurv"
       }
     },
     "web": {

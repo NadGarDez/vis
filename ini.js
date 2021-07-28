@@ -9,27 +9,22 @@ import N from "./noGranted.js"
 const H = (props)=>{
 	const [grant,setGrant] = useState(false)
 	const [,reload] = useState()
-	useEffect(
-		()=>{
-			(
-				async ()=>{
-					if(grant==false ){
-						const {status} = await requestTrackingPermissionsAsync()
-						if(status === "granted"){
-							setGrant(true)
-						}
+	
+	const cerox = ()=>{
+		(
+			async ()=>{
+
+
+					const {status} = await requestTrackingPermissionsAsync()
+					if(status === "granted"){
+						setGrant(true)
 					}
 
-				}
-			)()
-		},
-		[]
-	)
 
-	const cerox = ()=>{
-		reload()
+			}
+		)()
 	}
-	//cerox()
+	cerox()
 	let i = ""
 
 	if(grant == true){
@@ -37,7 +32,7 @@ const H = (props)=>{
 	}
 	else{
 		i = (
-			<N recargar={cerox}/>
+			<N recargar={props.cambiarEstado}/>
 		)
 	}
 
