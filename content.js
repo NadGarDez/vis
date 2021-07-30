@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import {StyleSheet, AppRegistry, ScrollView, Image, Text,Alert,View} from 'react-native';
 import Logo from './logo.js';
 import Ini from './ini.js';
@@ -44,7 +44,7 @@ export default class Content extends Component{
 			case 'ini':
 
 				return(
-					<Ini />
+					<Ini cambiarEstado={this.cambiarEstado}/>
 
 				)
 

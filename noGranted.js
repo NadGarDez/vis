@@ -33,7 +33,7 @@ export default class Ini extends Component{
           color="red"
           onPress={
             ()=>{
-              this.props.recargar()
+              this.props.recargar("logo")
             }
           }
 
