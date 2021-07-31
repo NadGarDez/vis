@@ -14,6 +14,22 @@ export default class Ini extends Component{
 
 	}
 
+	componentDidMount(){
+
+
+
+		setTimeout(
+			()=>{
+
+				this.props.reacrgar('ini')
+			},
+
+			2500
+
+		)
+	}
+
+
 	render(){
 
 	//	console.log(this.state.secciones[this.state.view].src)
@@ -26,18 +42,8 @@ export default class Ini extends Component{
           Avertissement d'autorisation
         </Text>
         <Text  style={{marginBottom:5}}>
-          Autorisation de transparence de suivi non accordée
+          L'application ne stockera pas les données de suivi
         </Text>
-        <Button
-          title="Recargar"
-          color="red"
-          onPress={
-            ()=>{
-              this.props.recargar("logo")
-            }
-          }
-
-        />
       </View>
 
 		)

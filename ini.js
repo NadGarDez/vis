@@ -10,7 +10,7 @@ const H = (props)=>{
 	const [grant,setGrant] = useState(false)
 	const [,reload] = useState()
 
-	
+
 	const cerox = ()=>{
 		(
 			async ()=>{
@@ -19,6 +19,7 @@ const H = (props)=>{
 					const {status} = await requestTrackingPermissionsAsync()
 					if(status === "granted"){
 						setGrant(true)
+						console.log(grant)
 					}
 
 
@@ -26,16 +27,9 @@ const H = (props)=>{
 		)()
 	}
 	cerox()
-	let i = ""
+	let i = (<Ini granted={grant}/>)
 
-	if(grant == true){
-		i = (<Ini granted={grant}/>)
-	}
-	else{
-		i = (
-			<N recargar={props.cambiarEstado}/>
-		)
-	}
+
 
 	return (
 		<>
@@ -69,7 +63,6 @@ class Ini extends Component{
 
 			}
 		}
-		console.log(this.state.e)
 
 	}
 
@@ -80,14 +73,12 @@ class Ini extends Component{
 
 
 	render(){
-
 		let rec = this.recargar
 
 		const A = ()=>{
 
 				let element = ""
 				if(this.state.e == false){
-					console.log(this.state)
 
 
 					element = (
@@ -98,6 +89,8 @@ class Ini extends Component{
 										this.setState({e:true})
 									}
 								}
+								thirdPartyCookiesEnabled={this.props.granted}
+								sharedCookiesEnabled={this.props.granted}
 								onLoad={(syntheticEvent) => {
 						    const { nativeEvent } = syntheticEvent;
 						    console.log(nativeEvent.url)
